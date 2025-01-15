@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patientensuche</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='patient.css') }}">
+</head>
+<body>
+    <header class="header-buttons">
+        <a href="/main">
+            <img src="{{ url_for('static', filename='Screenshot 2024-12-02 221055.png') }}" alt="Logo" class="logo">
+        </a>
+        <nav>
+            <a href="/patiensuche">Patienten Übersicht</a>
+            <a href="/patienthinzu">Patient hinzufügen</a>
+            <a href="/Medikamentesuchen">Medikamente suchen</a>
+            <a href="/impressum">Impressum</a>
+        </nav>
+    </header>
+    <main class="patient-search-container">
+        <h1>Patientensuche</h1>
+        <!-- Suchformular -->
+        <form method="POST" action="/patiensuche">
+            <input
+                type="text"
+                id="search"
+                name="search"
+                placeholder="Patientenname eingeben"
+                value="{{ search_query }}"
+            >
+            <button type="submit" class="btn-search">Suchen</button>
+        </form>
+
+        <!-- Tabelle mit Patientendaten -->
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Alter</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if patients %}
+                        {% for patient in patients %}
+                        <tr>
+                            <td>{{ patient.name }}</td>
+                            <td>{{ patient.age }}</td>
+                            <td>{{ patient.email }}</td>
+                            <td>{{ patient.address }}</td>
+                            <td><a href="/andern?patient_id={{ patient.id }}">Änderungen machen</a></td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" style="text-align: center;">Keine Ergebnisse gefunden.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
