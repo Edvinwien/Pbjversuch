@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root_password
+      - MYSQL_DB=user_system
+      - FLASK_ENV=development
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    entrypoint: ["bash", "-c", "while ! mysqladmin -h db -u root -proot_password ping --silent; do echo 'Waiting for database...'; sleep 2; done; python app.py"]
+
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: user_system
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./user_system.sql:/docker-entrypoint-initdb.d/user_system.sql
+
+volumes:
+  db_data:

@@ -1,0 +1,184 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    line-height: 1.6;
+}
+
+/* Header */
+.header-buttons {
+    background-color: #96B1BF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo {
+    height: 60px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    margin-right: 80px;
+    gap: 35px;
+}
+
+nav a {
+    font-size: 18px;
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+/* Hauptinhalt */
+body {
+    padding-top: 120px; /* Platz für den fixierten Header */
+    display: flex;
+    justify-content: center; /* Zentriert horizontal */
+    min-height: 100vh;
+    flex-direction: column; /* Inhalte übereinander anordnen */
+    padding-bottom: 20px; /* Platz am unteren Rand */
+}
+
+.main-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Zentrierung des Hauptinhalts */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Inhalt zentrieren */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Formular-Layout */
+form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: left; /* Inhalt des Formulars bleibt linksbündig */
+}
+
+form:first-of-type {
+    max-width: 400px; /* Das erste Formular (Dropdown) ist schmaler */
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: #96B1BF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(150, 177, 191, 0.5);
+}
+
+button {
+    background-color: #96B1BF;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #7A99A4;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .header-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        margin-right: 0;
+        gap: 15px;
+    }
+
+    .main-content {
+        padding: 0 20px; /* Platz für kleinere Bildschirme */
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+/* Neues Layout für die beiden Formulare */
+.forms-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+textarea:focus {
+    border-color: #96B1BF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(150, 177, 191, 0.5);
+}
