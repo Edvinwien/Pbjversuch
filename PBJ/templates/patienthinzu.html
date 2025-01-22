@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient hinzufügen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='patienthinzu.css')}}">
+</head>
+<body>
+    <header class="header-buttons">
+        <a href="/main">
+            <img src="{{ url_for('static', filename='Screenshot 2024-12-02 221055.png') }}" alt="Logo" class="logo">
+        </a>
+        <nav>
+            <a href="/patiensuche">Patienten Übersicht</a>
+            <a href="/patienthinzu">Patient hinzufügen</a>
+            <a href="/Medikamentesuchen">Medikamente suchen</a>
+            <a href="/impressum">Impressum</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="eingabe">
+            <h1>Patient hinzufügen</h1>
+
+           
+            <form action="/patienthinzu" method="POST">
+                <input type="text" name="name" placeholder="Vorname" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="number" name="age" placeholder="Alter" required>
+                <input type="text" name="address" placeholder="Adresse (Hausnummer, PLZ, Stadt)" required>
+                <input type="text" name="telefonnummer" placeholder="telefonnummer" required>
+                <button type="submit">Patient hinzufügen</button>
+            </form>
+            
+            <!-- Link zur Patientensuche -->
+            <a href="/patiensuche">Oder Patienten suchen</a>
+        </div>
+    </main>
+</body>
+</html>
